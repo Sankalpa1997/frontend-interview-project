@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <header>
-        <a href="/"><img src="" alt="The Big Phone Store Logo" /></a>
-    </header>
+    <Header/>
+    <p>{{msg}}</p>
   </div>
 </template>
 
 <script>
+
+import Header from './components/Header.vue'
+
 export default {
+  components: { Header },
   name: 'app',
   data () {
     return {
@@ -17,31 +20,4 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+<style src="./styles.css"></style>

@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("./assets/fonts/AmazonEmber_Rg.ttf") format("truetype"),
+    url("./assets/fonts/AmazonEmber_RgIt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.5;
+}
