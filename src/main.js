@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import SingleProductPage from './components/SingleProductPage.vue'
+import SingleProductPage from './views/SingleProductPage.vue'
 
 new Vue({
   el: '#app',

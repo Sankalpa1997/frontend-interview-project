@@ -1,22 +1,18 @@
 <template>
   <div id="app">
     <Header/>
-    <p>{{msg}}</p>
+    <SingleProductPage/>
   </div>
 </template>
 
 <script>
 
-import Header from './components/Header.vue'
+import Header from './components/Header.vue';
+import SingleProductPage from './views/SingleProductPage.vue';
 
 export default {
-  components: { Header },
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  components: { Header, SingleProductPage },
+  name: 'app'
 }
 </script>
 
