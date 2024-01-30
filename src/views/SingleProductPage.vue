@@ -1,7 +1,12 @@
 <template>
   <div class="container mx-auto">
+    <ProductImageViewer
+      :product="productData"
+      :thumbnail-path="thumbnailImagePath(productData.images[7])"
+      :large-path="largeImagePath(productData.images[1])"
+      :standard-path="standardImagePath(productData.images[0])"
+    />
     <ProductDetails :product="productData" />
-    <ProductImageViewer :product="productData" />
   </div>
 </template>
 
@@ -28,11 +33,22 @@ export default {
         colour: 'Lavender', 
         network: 'Unlocked', 
         storage: '512GB',
-        images: ["image1.jpg", "image2.jpg"],
+        images: ['product-image.webp', 'product-image-large.webp', 'product-image-front.webp','product-image-front-large.webp','product-image-back.webp','product-image-back-large.webp','product-image.webp','product-image-thumbnail.webp','product-image-front-thumbnail.webp','product-image-back-thumbnail.webp'],
       },
     };
+  },
+  methods: {
+    thumbnailImagePath(image) {
+      return require(`../assets/images/thumbnails/${image}`);
+    },
+    largeImagePath(image) {
+      return require(`../assets/images/large/${image}`);
+    },
+    standardImagePath(image) {
+      return require(`../assets/images/standard/${image}`);
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped></style>
