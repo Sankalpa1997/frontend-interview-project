@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto flex flex-row justify-between mt-12 p-5 bg-gray-100">
     <ProductImageViewer
       :product="productData"
       :thumbnail-path="thumbnailImagePath(productData.images[7])"
@@ -51,4 +51,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

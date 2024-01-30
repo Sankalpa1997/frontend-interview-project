@@ -1,9 +1,9 @@
 <template>
-    <div class="product-image-viewer">
+    <div class="w-2/4">
         <img
         :src="standardImagePath"
         :alt="product.title"
-        class="main-image"
+        class="main-image object-scale-down h-48 w-96"
         @mouseover="showZoomedImage"
         @mouseout="hideZoomedImage"
         />        
@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     standardImagePath() {
-      return this.standardPath || this.thumbnailPath; // Use thumbnail as fallback
+      return this.standardPath || this.thumbnailPath; 
     },
   },
   methods: {
@@ -52,14 +52,12 @@ export default {
 </script>
 
 <style scoped>
-/* Add styles for ProductImageViewer.vue if needed */
 .product-image-viewer {
-  position: relative;
+  width: 50%;
 }
 
 .main-image {
-  width: 100%; /* Adjust as needed */
+  width: 100%;
 }
 
-/* Additional styles for zoomed image can be added here */
 </style>
