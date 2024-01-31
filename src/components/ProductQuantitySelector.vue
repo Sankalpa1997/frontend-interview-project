@@ -26,6 +26,7 @@ export default {
       }
     },
     addToBasket() {
+      alert(`Added ${this.quantity} items to the basket.`);
       console.log(`Added ${this.quantity} items to the basket.`);
     }
   },
