@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-      }
+      },
+      colors: {
+        xblue: '#255886',
+        xyellow: "#FFD813"
+      },
     }
   },
   plugins: [],

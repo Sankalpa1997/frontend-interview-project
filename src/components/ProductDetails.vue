@@ -28,17 +28,22 @@
 
     <hr class="my-4 border-t-2 border-gray-300">
 
+    <ProductQuantitySelector/>
+
   </div>
 </template>
 
 <script>
+import ProductQuantitySelector from './ProductQuantitySelector.vue';
+
 export default {
-  props: ["product"],
-  computed: {
-    formattedPrice() {
-      return `£${this.product.price.toFixed(2)}`;
+    props: ["product"],
+    computed: {
+        formattedPrice() {
+            return `£${this.product.price.toFixed(2)}`;
+        },
     },
-  },
+    components: { ProductQuantitySelector }
 };
 </script>
 
