@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto flex flex-row justify-between mt-12 p-5 bg-gray-100">
+  <div class="xl:container xl:mx-auto flex flex-row justify-between p-5 bg-gray-100">
     <ProductImageViewer
       :product="productData"
       :thumbnail-path="thumbnailImagePath(productData.images[7])"

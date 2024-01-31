@@ -2,14 +2,42 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@font-face {
+/* @font-face {
   font-family: "Amazon Ember";
 
   src: url("./assets/fonts/AmazonEmber_Rg.ttf") format("truetype"),
+    url("./assets/fonts/Amazon-Ember-Medium.ttf") format("truetype"),
     url("./assets/fonts/AmazonEmber_RgIt.ttf") format("truetype");
 
   font-weight: normal;
+  font-style: normal;
+} */
 
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/fonts/AmazonEmber_Rg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/fonts/AmazonEmber_RgIt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/fonts/AmazonEmber_Bd.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Amazon Ember';
+  src: url('./assets/fonts/Amazon-Ember-Medium.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
 }
 
