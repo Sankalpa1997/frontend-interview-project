@@ -1,5 +1,5 @@
 <template>
-    <div class="w-2/4">
+    <div class="product-images-container">
         <img
         :src="standardImagePath"
         :alt="product.title"
@@ -52,8 +52,8 @@ export default {
 </script>
 
 <style scoped>
-.product-image-viewer {
-  width: 50%;
+.product-images-container {
+  @apply w-1/2 flex flex-col items-center justify-center bg-white p-12;
 }
 
 .main-image {

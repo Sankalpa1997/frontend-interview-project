@@ -1,5 +1,5 @@
 <template>
-  <div class="xl:container xl:mx-auto flex flex-row justify-between p-5 bg-gray-100">
+  <div class="product-container">
     <ProductImageViewer
       :product="productData"
       :thumbnail-path="thumbnailImagePath(productData.images[7])"
@@ -52,4 +52,7 @@ export default {
 </script>
 
 <style scoped>
+.product-container {
+@apply xl:container xl:mx-auto flex flex-row justify-between px-5 py-8 bg-gray-100 gap-24;
+}
 </style>

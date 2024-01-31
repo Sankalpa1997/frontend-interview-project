@@ -1,5 +1,5 @@
 <template>
-  <div class="w-2/4">
+  <div class="w-1/2">
     <p class="uppercase text-gray-400">{{ product.brand }}</p>
     <h1 class="text-2xl font-medium">{{ product.title }}</h1>
     <p>
