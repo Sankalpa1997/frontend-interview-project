@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <Header/>
+    <PageHeader/>
     <SingleProductPage/>
   </div>
 </template>
 
 <script>
-
-import Header from './components/Header.vue';
+import PageHeader from './components/PageHeader.vue';
 import SingleProductPage from './views/SingleProductPage.vue';
 
 export default {
-  components: { Header, SingleProductPage },
+  components: { PageHeader, SingleProductPage },
   name: 'app'
 }
 </script>

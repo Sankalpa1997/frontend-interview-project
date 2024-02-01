@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Header',
+  name: 'PageHeader',
   data() {
     return {
       tbpsLogo: require('../assets/tbps-logo.webp'),
