@@ -1,20 +1,29 @@
 <template>
-  <div class="product-images-container">
-    <!-- Main Product Image -->
-    <img
-      :src="standardImagePath"
-      :alt="product.title"
-      class="product-standard-image"
-    />
+  <div class="product-images-container relative">
+    <div class="">
+      <!-- Standard Image -->
+      <img
+        :src="standardImagePath(product.images[this.mainImageIndex])"
+        :alt="product.title"
+        class="product-standard-image"
+        @mouseover="showZoomedImage"
+        @mouseout="hideZoomedImage"
+      />
+
+      <!-- Zoomed Image -->
+      <div v-show="zoomedImageVisible" class="zoomed-image-container">
+        <img :src="largeImagePath(product.images[this.mainImageIndex])" :alt="product.title" class="zoomed-image" />
+      </div>
+    </div>
 
     <!-- Thumbnails -->
     <div class="thumbnail-container">
       <img
-        v-for="(thumbnail, index) in product.thumbnails"
+        v-for="(image, index) in product.images"
         :key="index"
-        :src="thumbnailImagePath(thumbnail)"
+        :src="thumbnailImagePath(image)"
         :alt="product.title"
-        @mouseover="changeMainImage(thumbnail)"
+        @mouseover="changeMainImage(index)"
         class="thumbnail"
       />
     </div>
@@ -28,30 +37,34 @@ export default {
       type: Object,
       required: true,
     },
-    standardPath: {
-      type: String,
-      required: true,
-    },
   },
   data() {
     return {
-      mainImage: this.standardPath || this.thumbnailPath,
+      mainImageIndex: 0,
+      zoomedImageVisible: false,
     };
   },
   computed: {
-    standardImagePath() {
-      return this.mainImage;
-    }
   },
   methods: {
-    thumbnailImagePath(image) {
-      const path = require(`../assets/images/thumbnails/${image}`);
-      console.log('Thumbnail path:', path);
-      return path;
+    standardImagePath(image) {
+      return require(`../assets/images/standard/${image.standard}`);
     },
-    changeMainImage(image) {
-      // this.mainImage = `${this.thumbnailPath}/${image}`;
-      this.mainImage = require(`../assets/images/standard/${image.replace('-thumbnail', '')}`);
+    thumbnailImagePath(image) {
+      return require(`../assets/images/thumbnails/${image.thumbnail}`);
+    },
+    largeImagePath(image) {
+      return require(`../assets/images/large/${image.zoomed}`);
+    },
+    changeMainImage(index) {
+      this.mainImageIndex = index;
+      this.hideZoomedImage();
+    },
+    showZoomedImage() {
+      this.zoomedImageVisible = true;
+    },
+    hideZoomedImage() {
+      this.zoomedImageVisible = false;
     },
   },
 };
@@ -71,11 +84,29 @@ export default {
 }
 
 .thumbnail {
-  @apply w-16 h-16 object-contain p-2 cursor-pointer ;
+  @apply w-16 h-16 object-contain p-2 cursor-pointer;
 }
 
 .thumbnail:hover {
   @apply opacity-75 border-solid rounded-md border-xblue border-2;
 }
-</style>
 
+.zoomed-image-container {
+  position: absolute;
+  top: 0;
+  left: 102%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.zoomed-image {
+  height: 100%;
+}
+</style>

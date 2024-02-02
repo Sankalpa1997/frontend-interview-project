@@ -2,7 +2,6 @@
   <div class="product-container">
     <ProductImageViewer
       :product="productData"
-      :standard-path="standardImagePath(productData.images[0])"
     />
     <ProductDetails :product="productData" />
   </div>
@@ -31,20 +30,24 @@ export default {
         network: "Unlocked",
         storage: "512GB",
         images: [
-          "product-image.webp",
-          "product-image-large.webp",
-          "product-image-front.webp",
-          "product-image-front-large.webp",
-          "product-image-back.webp",
-          "product-image-back-large.webp",
+          {
+            standard: "product-image.webp",
+            thumbnail: "product-image-thumbnail.webp",
+            zoomed: "product-image-large.webp",
+          },
+          {
+            standard: "product-image-front.webp",
+            thumbnail: "product-image-front-thumbnail.webp",
+            zoomed: "product-image-front-large.webp",
+          },
+          {
+            standard: "product-image-back.webp",
+            thumbnail: "product-image-back-thumbnail.webp",
+            zoomed: "product-image-back-large.webp",
+          },
         ],
-        thumbnails: [
-          "product-image-thumbnail.webp",
-          "product-image-front-thumbnail.webp",
-          "product-image-back-thumbnail.webp",
-        ]
       },
-      thumbnailPath: '../assets/images/thumbnails/',
+      thumbnailPath: "../assets/images/thumbnails/",
     };
   },
   methods: {
