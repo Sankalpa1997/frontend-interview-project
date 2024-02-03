@@ -1,19 +1,26 @@
 <template>
   <div class="product-images-container relative">
-    <div class="">
+    <div class="standard-image-container" 
+      @mouseover="showNet"
+      @mouseout="hideNet"
+      @mousemove="updateNetPosition"
+    >
       <!-- Standard Image -->
       <img
         :src="standardImagePath(product.images[this.mainImageIndex])"
         :alt="product.title"
         class="product-standard-image"
-        @mouseover="showZoomedImage"
-        @mouseout="hideZoomedImage"
+        ref="standardImage"
       />
 
-      <!-- Zoomed Image -->
-      <div v-show="zoomedImageVisible" class="zoomed-image-container">
-        <img :src="largeImagePath(product.images[this.mainImageIndex])" :alt="product.title" class="zoomed-image" />
-      </div>
+       <!-- Net Overlay -->
+       <div v-if="netVisible" class="net-overlay" :style="netOverlayStyle"></div>
+
+    </div>
+
+    <!-- Zoomed Image -->
+    <div v-show="zoomedImageVisible" class="zoomed-image-container">
+      <img :src="largeImagePath(product.images[this.mainImageIndex])" :alt="product.title" class="zoomed-image" />
     </div>
 
     <!-- Thumbnails -->
@@ -42,9 +49,24 @@ export default {
     return {
       mainImageIndex: 0,
       zoomedImageVisible: false,
+      netVisible: false,
+      netWidth: 150,
+      netHeight: 100,
+      mousePosition: { x: 0, y: 0 },
     };
   },
   computed: {
+    netOverlayStyle() {
+      const mouseX = this.mousePosition.x - this.netWidth;
+      const mouseY = this.mousePosition.y - this.netHeight;
+
+      return {
+        width: `${this.netWidth}px`,
+        height: `${this.netHeight}px`,
+        left: `${mouseX}px`,
+        top: `${mouseY}px`,
+      };
+    },
   },
   methods: {
     standardImagePath(image) {
@@ -65,6 +87,20 @@ export default {
     },
     hideZoomedImage() {
       this.zoomedImageVisible = false;
+    },
+    showNet() {
+      this.netVisible = true;
+    },
+    hideNet() {
+      this.netVisible = false;
+    },
+    updateNetPosition(event) {
+      this.mousePosition = { x: event.clientX - this.netWidth, y: event.clientY - this.netHeight };
+
+      if (this.netVisible) {
+        this.hideNet();
+        this.showNet();
+      }
     },
   },
 };
@@ -90,23 +126,31 @@ export default {
 .thumbnail:hover {
   @apply opacity-75 border-solid rounded-md border-xblue border-2;
 }
-
 .zoomed-image-container {
   position: absolute;
-  top: 0;
-  left: 102%;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  display: none;
 }
 
 .zoomed-image {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.standard-image-container {
+  position: relative;
+}
+
+
+.net-overlay {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid red;
+  pointer-events: none;
+  cursor: crosshair;
 }
 </style>
