@@ -1,4 +1,2 @@
 [build]
-  base = "frontend-interview-project"
-  command = "npm run build"
-  publish = "dist"
+command = “CI= npm run build”
