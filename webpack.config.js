@@ -19,7 +19,6 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {},
-          // other vue-loader options go here
         },
       },
       {
@@ -73,5 +72,5 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map';
-  // ... your production plugins ...
+  
 }
